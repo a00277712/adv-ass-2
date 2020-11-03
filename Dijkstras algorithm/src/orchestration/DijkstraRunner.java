@@ -1,7 +1,9 @@
-package Orchestration;
+package orchestration;
 
-import Models.Town;
-import Models.Westmeath;
+import models.Town;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class DijkstraRunner {
     public static void main(String[] args) {
@@ -31,19 +33,19 @@ public class DijkstraRunner {
 
         kinnegrad.addDestination(tang, 3);
 
-        Westmeath westmeath = new Westmeath();
+        // create as list for printing in a loop
+        List<Town> westmeath = new LinkedList<>();
+        westmeath.add(athlone);
+        westmeath.add(ballinasloe);
+        westmeath.add(tubberclare);
+        westmeath.add(horseleap);
+        westmeath.add(mulingar);
+        westmeath.add(kinnegrad);
+        westmeath.add(tang);
 
-        westmeath.addTown(athlone);
-        westmeath.addTown(ballinasloe);
-        westmeath.addTown(tubberclare);
-        westmeath.addTown(horseleap);
-        westmeath.addTown(mulingar);
-        westmeath.addTown(kinnegrad);
-        westmeath.addTown(tang);
+        DijkstraPathAlgorithm.calculateShortestPathFromSource(athlone);
 
-        westmeath = DijkstraAlgorithm.calculateShortestPathFromSource(westmeath, athlone);
-
-        for (Town town: westmeath.getTowns()) {
+        for (Town town: westmeath) {
             System.out.println(town.toString());
         }
     }
