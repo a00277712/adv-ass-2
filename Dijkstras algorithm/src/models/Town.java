@@ -20,12 +20,13 @@ public class Town {
 
     @Override
     public String toString() {
-        String route = "";
+        StringBuilder route
+                = new StringBuilder();
 
         for (Town town: shortestPath) {
-            route += "->" + town.name;
+            route.append("->" + town.name);
         }
-        return name + ": " + distance + ": " + route + "->" + name;
+        return name + ": " + distance + ": " + route.toString() + "->" + name;
     }
 
     public List<Route> getRoutes() {
